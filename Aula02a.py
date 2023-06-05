@@ -18,4 +18,16 @@
     DQL - Solicitações (SELECT, solicitações)
     DCL - Controle (quais usuários podem acessar e etc)
     DDL - Transação (solicitação feita ao BD executados da melhor maneira seguinda as Características de Transação DICA (Durabilidade, Isolamento, Consistência e Atomicidade))
-    
+
+
+
+
+
+
+
+
+
+
+
+
+"""
