@@ -102,3 +102,90 @@ CREATE TABLE pessoas (
 DESCRIBE pessoas; # RUN! vai abrir a estrutura do nome, idade, sexo, etc., varchar, tinyint, char...
 
 
+
+# Vamos abrir o Wamp Server > MySql > MySQL Console (Terminal)
+# Prompt de comando do mysql.exe
+mysql> show databases;
+
+"""
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cadastro           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+"""
+
+mysql> use cadastro;
+"""Database changed"""
+
+mysql> status;
+"""
+mysql> status
+--------------
+c:/wamp64/bin/mysql/mysql8.0.31/bin/mysql.exe  Ver 8.0.31 for Win64 on x86_64 (MySQL Community Server - GPL)
+
+Connection id:          12
+Current database:       cadastro
+Current user:           root@localhost
+SSL:                    Cipher in use is TLS_AES_256_GCM_SHA384
+Using delimiter:        ;
+Server version:         8.0.31 MySQL Community Server - GPL
+Protocol version:       10
+Connection:             localhost via TCP/IP
+Server characterset:    utf8mb4
+Db     characterset:    utf8mb4
+Client characterset:    cp850
+Conn.  characterset:    cp850
+TCP port:               3306
+Binary data as:         Hexadecimal
+Uptime:                 39 min 50 sec
+
+Threads: 4  Questions: 206  Slow queries: 0  Opens: 185  Flush tables: 3  Open tables: 101  Queries per second avg: 0.086
+--------------
+"""
+
+mysql> show tables;
+"""
+mysql> show tables;
++--------------------+
+| Tables_in_cadastro |
++--------------------+
+| pessoas            |
++--------------------+
+1 row in set (0.01 sec)
+"""
+
+mysql> describe pessoas;
+"""
+mysql> describe pessoas;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| nome          | varchar(30) | YES  |     | NULL    |       |
+| idade         | tinyint     | YES  |     | NULL    |       |
+| sexo          | char(1)     | YES  |     | NULL    |       |
+| peso          | float       | YES  |     | NULL    |       |
+| altura        | float       | YES  |     | NULL    |       |
+| nacionalidade | varchar(20) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+"""
+
+mysql> exit
+
+# APRENDE O COMANDO MANO, sim mesmo em terminal!!!! 
+
+
+
+
+
+
+
+
+
