@@ -48,3 +48,57 @@ RESUMINDO: Banco de Dados > Conjunto de Tabelas         > Tableas são Conjunto 
 RESUMINDO: Local          > Características Semelhantes > Instâncias Distintas  > Registros difeferentes. 
 
 """
+# Vamos começar CRIANDO UM BD (no nosso ambiente do MySQL).
+# WAMP Server > MySQL Workbench > 
+
+CRAETE DATABASE cadastro; # Run! 1 row affected; - criado no SCHEMAS o BD chamado 'cadastro', dentro tem e.g.: TABELAS, VIEWS, FUNCTIONS, etc.
+
+# Tabela: PESSOAS (contém registros)
+# Campos (características): nome, idade, sexo, peso, altura, nacionalidade 
+
+CREATE TABLE pessoas (
+  nome,
+  idade,
+  sexo,
+  peso,
+  altura,
+  nacionalidade,
+); # NOT RUN! 
+
+# TIPOS PRIMITIVOS (do MySql): 
+
+#   Numéricos
+#     - inteiro (TinyInt, SmallInt, Int, MediumInt, BigInt)
+#     - reais (Decimal, Float, Double, Real)
+#     - lógicos (Bit, Boolean)
+
+#   Data e Tempo (Date, DateTime, TimeStamp, Time, Year)
+
+#   Literal
+#     - caracteres (Char, VarChar - fixo, e depende)
+#     - texto (TinyText, Text, MediumText, LongText)
+#     - binário (TinyBlob, Blob, MediumBlob, LongBlob)
+#     - coleções (Enum, Set)
+
+#   Espacial (Geometry, Point, Polygon, MultiPolygon)
+
+# Colocar os Tipos Primitivos em cada novo campo (vai nos ajudar a dimensionar). 
+# PRECISÂO - Como os dados serão armazenados em disco, precisamos saber DIMENSIONAR a ESTRUTURA da TABELA. 
+# Cada TIPO vai ter PRECISÃO diferente (pra dimensionar)...
+
+# o símbolo ; indica o fim do COMANDO.
+
+USE cadastro; # Run!
+
+CREATE TABLE pessoas (
+  nome VarChar(30),
+  idade TinyInt(3),
+  sexo Char(1),
+  peso Float,
+  altura Float,
+  nacionalidade VarChar(20)
+); # Run! 
+
+DESCRIBE pessoas; # RUN! vai abrir a estrutura do nome, idade, sexo, etc., varchar, tinyint, char...
+
+
