@@ -10,7 +10,6 @@
 - Empresas que usam o MySQL: Nasa, Google, Wikipedia, Adobe, Cisco, Ebay, Bradesco, Hostnet...
 
 - MySQL possui todos os padrões: 1) Base de Dados, 2) Linguagem de Especificação, 3) Sistema Gerenciador, 4) Programas Adicionais
-- 
 
 - Instruções do MySQL que se caracterizam como linguagens do tipo:
     DDL - Definição da Estrutura da BD
@@ -19,6 +18,13 @@
     DCL - Controle (quais usuários podem acessar e etc)
     DDL - Transação (solicitação feita ao BD executados da melhor maneira seguinda as Características de Transação DICA (Durabilidade, Isolamento, Consistência e Atomicidade))
 
+- Instalação dos Programas
+
+    Microsoft .NET Framework 4.5 [ https://www.microsoft.com/en-us/download/details.aspx?id=30653 ]
+    Visual C++ Redistr. for Visual 2019 [ https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022 ]
+    MySQL Workbench [ https://dev.mysql.com/downloads/workbench/ ]
+    Wamp Server [  ]
+    MySQL 
 
 
 
