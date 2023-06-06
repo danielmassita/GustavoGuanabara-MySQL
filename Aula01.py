@@ -5,7 +5,6 @@
 Transcrição
 
 
-Procurar no vídeo
 0:00
 ♫ Cantarolando ♫
 0:10
