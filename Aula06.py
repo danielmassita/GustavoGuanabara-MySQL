@@ -12,7 +12,6 @@ Aula 06 - Curso MySQL #06 - Alterando a Estrutura da Tabela (ALTER TABLE e DROP 
 Transcrição
 
 
-Procurar no vídeo
 0:20
 Olá, pequeno gafanhoto seja bem vindo a mais uma aula do seu curso em vídeo de banco de dados!
 0:25
