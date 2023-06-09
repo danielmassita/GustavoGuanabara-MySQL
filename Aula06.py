@@ -8,6 +8,10 @@ Aula 06 - Curso MySQL #06 - Alterando a Estrutura da Tabela (ALTER TABLE e DROP 
 
 """
 
+
+
+
+
 """
 Transcrição
 
