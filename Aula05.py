@@ -16,7 +16,6 @@ Aula 05 - Curso MySQL #05 - Inserindo Dados na Tabela (INSERT INTO)
 Transcrição
 
 
-Procurar no vídeo
 0:00
 Você que assistiu as primeiras aulas de "Banco de Dados"
 0:03
