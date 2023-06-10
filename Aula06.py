@@ -102,7 +102,14 @@ SELECT * FROM teste; # EITA, eu dupliquei as entradas, pois não tinham CHAVE PR
 DROP TABLE IF EXISTS alunos; # 1	59	01:40:43	DROP TABLE IF EXISTS alunos	0 row(s) affected, 1 warning(s): 1051 Unknown table 'cadastro.alunos'	0.016 sec
 DROP TABLE IF EXISTS teste; # 3	60	01:40:48	DROP TABLE IF EXISTS teste	0 row(s) affected	0.047 sec
 
+"""
+Na aula passada falamos de comandos dos tipos:
 
+- DDL (Data Definition Language): CREATE DATABASE, CREATE TABLE, ALTER TABLE, DROP TABLE
+- DML (Data Manipulation Language): INSERT INTO, 
+
+# O 'alter table' altera a definição da tabela. E o comando 'drop table' também considera uma definição de tabela (e não dos dados per si).
+"""
 
 """
 Transcrição
