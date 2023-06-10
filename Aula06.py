@@ -26,24 +26,33 @@ ADD COLUMN profissao varchar(10);
 ALTER TABLE pessoas
 DROP COLUMN profissao;
 
+
 # Vamos adicionar a profissão após o nome...
 ALTER TABLE pessoas
 ADD COLUMN profissao varchar(10) AFTER nome;
 DESC pessoas;
 
+
 # Esse seria um incremento como PRIMEIRA (first) coluna. Para demais, usar AFTER...
 ALTER TABLE pessoas
 ADD COLUMN codigo INT FIRST;
 
+
 # Podemos alterar o tipo primitivo do campo e todas as constraints (redefinindo), só NÃO PODE RENOMEAR um campo...
 ALTER TABLE pessoas
 MODIFY COLUMN profissao VarChar(20) NOT NULL DEFAULT ''; # O not null não poderia ser usado, pois ao adicionar na tabela, vários nulls surgiram com a nova coluna...
+
 
 # Podemos alterar um campo, usando outro comando, mas a sintaxe obriga-nos a colocar o nome_velho e o nome_novo
 ALTER TABLE pessoas
 CHANGE COLUMN profissao prof VarChar(20); # Se não replicar o final `not null default ''` vamos perder essa constraint... 
 
 
+# Podemos também renomear uma tabela inteira....
+ALTER TABLE pessoas
+RENAME TO gafanhotos;
+DESC pessoas; # Dá erro...
+DESC gafanhotos; # Agora dá certo! 
 
 """
 Transcrição
