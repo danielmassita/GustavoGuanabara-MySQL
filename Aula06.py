@@ -5,10 +5,43 @@
 """
 Aula 06 - Curso MySQL #06 - Alterando a Estrutura da Tabela (ALTER TABLE e DROP TABLE)
 
-[...]
+- Vamos aprender a alterar a estrutura de uma tabela... 
+- Já fizemos a criação do banco, da tabela, inserimos dados. 
+- Agora vamos aprender a MODIFICAÇÃO DA ESTRUTURA da tabela.
+- Alterando a tabela, vamos adicionar uma nova coluna
+
+- BD > Tabelas > Campos (column) >  
+"""
+DESC pessoas; # DESC = DESCRIBE
+
+ALTER TABLE pessoas
+ADD COLUMN profissao varchar(10);
+"""
+- Adicionando uma nova coluna, podemos notar que: 
+- A column nova vai parar no FINAL...
+- Para colocar a profissão no lugar de outra coluna, vamos eliminar e depois adicionar...
 """
 
+# Eliminando a coluna previamente criada (drop profissao)...
+ALTER TABLE pessoas
+DROP COLUMN profissao;
 
+# Vamos adicionar a profissão após o nome...
+ALTER TABLE pessoas
+ADD COLUMN profissao varchar(10) AFTER nome;
+DESC pessoas;
+
+# Esse seria um incremento como PRIMEIRA (first) coluna. Para demais, usar AFTER...
+ALTER TABLE pessoas
+ADD COLUMN codigo INT FIRST;
+
+# Podemos alterar o tipo primitivo do campo e todas as constraints (redefinindo), só NÃO PODE RENOMEAR um campo...
+ALTER TABLE pessoas
+MODIFY COLUMN profissao VarChar(20) NOT NULL DEFAULT ''; # O not null não poderia ser usado, pois ao adicionar na tabela, vários nulls surgiram com a nova coluna...
+
+# Podemos alterar um campo, usando outro comando, mas a sintaxe obriga-nos a colocar o nome_velho e o nome_novo
+ALTER TABLE pessoas
+CHANGE COLUMN profissao prof VarChar(20); # Se não replicar o final `not null default ''` vamos perder essa constraint... 
 
 
 
