@@ -5,8 +5,58 @@
 """
 Aula 05 - Curso MySQL #05 - Inserindo Dados na Tabela (INSERT INTO)
 
+- Inserindo (alimentando) dados na tabela! 
+- No passado, usamos os seguintes dados e types:
+""" 
+CREATE TABLE pessoas (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nome` varchar(30) NOT NULL ,
+    `nascimento` date,
+    `sexo` enum('M', 'F'),
+    `peso` decimal(5,2),
+    `altura` decimal(3,2),
+    `nacionalidade` varchar(20) DEFAULT 'Brasil', 
+    PRIMARY KEY (id)
+) default charset = utf8;
+"""
+- Vamos aprender a inserir dados nessa tabela, mas vamos relembrar algumas definições: 
+- A SQL é separada por CATEGORIAS:
+- CRATE TABLE = definição da estrutura da tabela
+- 
+
+COMANDOS POR TIPOS DE CATEGORIA
+- DDL (Data Definition Language): craete database, create table
+- DML (Data Modification Language): 
+
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
 
 """
+USE cadastro;
+DESCRIBE pessoas;
+
+INSERT INTO pessoas
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES
+('1', 'Godofredo', '1984-01-02', 'M', '78.5', '1.83', 'Brasil'); 
+
+# NÂO EXECUTA!
+# Datas em SQL são YYYY-MM-DD
+# Como o `id` é um valor do tipo INT, NOT NULL, AUTO_INCREMENT, eu não preciso especificar o `id`. Melhorando o código...
+
+INSERT INTO pessoas
+(nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES
+('Godofredo', '1984-01-02', 'M', '78.5', '1.83', 'Brasil'); 
+SELECT * FROM pessoas;
+# 1	Godofredo	1984-01-02	M	78.50	1.83	Brasil
+
+INSERT INTO pessoas
+(nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES
+('Maria', '1999-12-30', 'F', '55.2', '1.65', 'Portugal'); 
+SELECT * FROM pessoas;
+# 1	Godofredo	1984-01-02	M	78.50	1.83	Brasil
+# 2	Maria	1999-12-30	F	55.20	1.65	Portugal
 
 
 
