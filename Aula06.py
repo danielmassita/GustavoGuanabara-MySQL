@@ -54,6 +54,56 @@ RENAME TO gafanhotos;
 DESC pessoas; # Dá erro...
 DESC gafanhotos; # Agora dá certo! 
 
+# Vamos fazer um teste, pra ver se pode ser criada uma tabela já existente:
+CREATE TABLE if not exists gafanhotos (teste int);
+# 1	43	01:26:03	CREATE TABLE if not exists gafanhotos (teste int)	0 row(s) affected, 1 warning(s): 1050 Table 'gafanhotos' already exists	0.031 sec
+
+# ATENÇÃO! Se você não usar 'if not exists', você acabaria APAGANDO A TABELA ANTIGA PRA CRIAR UMA NOVA! FODEU! 
+
+# Vamos fazer mais uma tabela... 
+CREATE TABLE IF NOT EXISTS cursos (
+  nome VarChar(30) Not Null Unique,
+  descricao Text,
+  carga Int Unsigned,
+  totaulas Int Unsigned,
+  ano Year Default '2016',
+) DEFAULT CHARTSET = utf8;
+DESCRIBE cursos;
+
+# Vamos adicionar a CHAVE PRIMÁRIA (não pode esquecer!), criando uma coluna nova 'idcurso' e depois atribuindo a constraint de 'primary key (idcurso)'
+ALTER TABLE cursos
+ADD COLUMN idcurso INT FIRST;
+
+ALTER TABLE cursos
+ADD PRIMARY KEY (idcurso);
+
+# Primary Key e Unique são coisas diferentes!
+
+DROP TABLE cursos; # Podemos apgar facilmente... Mas vamos testar com outra tabela fictícia.
+
+CREATE TABLE if not exists teste(
+    id int,
+    nome varchar(10),
+    idade int
+);
+
+INSERT INTO teste VALUE 
+('1', 'Pedro', '22'),
+('2', 'Maria', '12'),
+('3', 'Maricota', '77');
+
+INSERT INTO teste VALUE 
+('1', 'Pedro', '22'),
+('2', 'Maria', '12'),
+('3', 'Maricota', '77');
+
+SELECT * FROM teste; # EITA, eu dupliquei as entradas, pois não tinham CHAVE PRIMÁRIA, não teria o problema de repetição. 
+
+DROP TABLE IF EXISTS alunos; # 1	59	01:40:43	DROP TABLE IF EXISTS alunos	0 row(s) affected, 1 warning(s): 1051 Unknown table 'cadastro.alunos'	0.016 sec
+DROP TABLE IF EXISTS teste; # 3	60	01:40:48	DROP TABLE IF EXISTS teste	0 row(s) affected	0.047 sec
+
+
+
 """
 Transcrição
 
