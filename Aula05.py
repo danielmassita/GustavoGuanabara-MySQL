@@ -9,15 +9,15 @@ Aula 05 - Curso MySQL #05 - Inserindo Dados na Tabela (INSERT INTO)
 - No passado, usamos os seguintes dados e types:
 """ 
 CREATE TABLE pessoas (
-    `id` int NOT NULL AUTO_INCREMENT,
-    `nome` varchar(30) NOT NULL ,
-    `nascimento` date,
-    `sexo` enum('M', 'F'),
-    `peso` decimal(5,2),
-    `altura` decimal(3,2),
-    `nacionalidade` varchar(20) DEFAULT 'Brasil', 
-    PRIMARY KEY (id)
-) default charset = utf8;
+    `id` int NOT NULL AUTO_INCREMENT, # ID é único. INTeger, não nulo, auto++
+    `nome` varchar(30) NOT NULL , # VarChar é variável então só armazena a quantidade de chars, e descarta o resto, gasta menos memória
+    `nascimento` date, # O tipo de idade é o nascimento, assim calcula automaticamente YYYY-MM-DD
+    `sexo` enum('M', 'F'), # O enum(a, b) vai somente aceitar os argumentos escolhidos como parâmetros
+    `peso` decimal(5,2), # O decimal considera 5 casas numéricas ao todo sendo 2 decimais após a vírgula, tipo 095.50 kg.
+    `altura` decimal(3,2), # O decimal 3,2 considera a altura sendo tipo três números ao todo, sendo dois após a vírgula 2.15 m.
+    `nacionalidade` varchar(20) DEFAULT 'Brasil',  # Por padrão, se nada for dito, será default = 'Brasil'
+    PRIMARY KEY (id) # DEFINE o ID como sendo a chave principal
+) default charset = utf8; # Permite que acentuações do nosso teclado sejam aceitas nos valores do Banco de Dados.
 """
 - Vamos aprender a inserir dados nessa tabela, mas vamos relembrar algumas definições: 
 - A SQL é separada por CATEGORIAS:
@@ -26,9 +26,8 @@ CREATE TABLE pessoas (
 
 COMANDOS POR TIPOS DE CATEGORIA
 - DDL (Data Definition Language): craete database, create table
-- DML (Data Modification Language): 
+- DML (Data Manipulation Language): insert into, 
 
-(id, nome, nascimento, sexo, peso, altura, nacionalidade)
 
 """
 USE cadastro;
@@ -50,6 +49,7 @@ VALUES
 SELECT * FROM pessoas;
 # 1	Godofredo	1984-01-02	M	78.50	1.83	Brasil
 
+
 INSERT INTO pessoas
 (nome, nascimento, sexo, peso, altura, nacionalidade)
 VALUES
@@ -59,8 +59,51 @@ SELECT * FROM pessoas;
 # 2	Maria	1999-12-30	F	55.20	1.65	Portugal
 
 
+# Digamos que eu QUEIRA MUITO colocar o ID, podemos digitar... 
+INSERT INTO pessoas
+(id, nome, nascimento, sexo, peso, altura, nacionalidade) # Adiciona id aqui 
+VALUES
+(DEFAULT, 'Creuza', '1920-12-30', 'F', '50.2', '1.65', DEFAULT); # E adiciona o ID default aqui
+SELECT * FROM pessoas;
+# 1	Godofredo	1984-01-02	M	78.50	1.83	Brasil
+# 2	Maria	1999-12-30	F	55.20	1.65	Portugal
+# 3	Creuza	1920-12-30	F	50.20	1.65	Brasil
 
 
+# O ID foi colocado conforme a definição inicial. Se a ordem é a mesma, não precisamos informar os campos no início... Poderia omitir e fazer assim, INFORMANDO TODOS OS DADOS RESPECTIVOS:
+INSERT INTO pessoas VALUES
+(DEFAULT, 'Adalgiza', '1930-11-2', 'F', '63.2', '1.75', 'Irlanda');
+# 1	Godofredo	1984-01-02	M	78.50	1.83	Brasil
+# 2	Maria	1999-12-30	F	55.20	1.65	Portugal
+# 3	Creuza	1920-12-30	F	50.20	1.65	Brasil
+# 4	Adalgiza	1930-11-02	F	63.20	1.75	Irlanda
+
+
+# Podemos também usar o INSERT INTO e cadastrar várias entradas de uma só vez... 
+#       INSERT INTO pessoas
+#       (id, nome, nascimento, sexo, peso, altura, nacionalidade)
+#       VALUES
+#       (DEFAULT, 'Ana', '1975-12-22', 'F' '52.3', '1.45', 'EUA'),
+#       (DEFAULT, 'Pedro', '2000-07-15', 'M', '52.3', '1.45', 'Brasil'),
+#       (DEFAULT, 'Maria', '1999-05-30', 'F', '75.9', '1.70', 'Portugal');
+ 
+INSERT INTO pessoas VALUES
+(DEFAULT, 'Cláudio', '1975-4-22', 'M', '99.0', '2.15', 'Brasil'),
+(default, 'Pedro', '1999-12-3', 'M', '87', '2', default),
+(default, 'Janaína', '1987-11-12', 'F', '75.4', '1.66', 'EUA');
+"""
+1	Godofredo	1984-01-02	M	78.50	1.83	Brasil
+2	Maria	1999-12-30	F	55.20	1.65	Portugal
+3	Creuza	1920-12-30	F	50.20	1.65	Brasil
+4	Adalgiza	1930-11-02	F	63.20	1.75	Irlanda
+5	Cláudio	1975-04-22	M	99.00	2.15	Brasil
+6	Pedro	1999-12-03	M	87.00	2.00	Brasil
+7	Janaína	1987-11-12	F	75.40	1.66	EUA
+"""
+
+# Relembrando, temos comandos de DDL e agora DML. 
+# DDL = Data Definition Language (create database, create table).
+# DML = Data Manipulation Language (insert into)
 
 """
 Transcrição
