@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS cursos (
   carga Int Unsigned,
   totaulas Int Unsigned,
   ano Year Default '2016',
-) DEFAULT CHARTSET = utf8;
+) DEFAULT CHARSET = utf8;
 DESCRIBE cursos;
 
 # Vamos adicionar a CHAVE PRIMÁRIA (não pode esquecer!), criando uma coluna nova 'idcurso' e depois atribuindo a constraint de 'primary key (idcurso)'
