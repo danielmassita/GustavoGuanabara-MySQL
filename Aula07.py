@@ -32,3 +32,14 @@ INSERT INTO cursos VALUES
 ('10', 'YouTuber', 'Gerar Polêmica e Ganhar Inscritos', '5', '2', '2018');
 
 SELECT * FROM cursos;
+
+# Agora, podemos perceber que nosso BD possui cadastro de duas coisas: "gafanhotos" e "cursos".
+# Em 'gafanhotos' temos (id, nome, profissao, nascimento, sexo, peso, altura, nacionalidade) e em 'cursos' temos (idcursos, nome, descricao, carga, totaulas, ano)
+# O 'id' de gafanhotos é a PRIMARY KEY. O 'idcurso' também é PRIMARY KEY.
+
+# Ao final, teremos uma tablea, ainda com alguns "erros":
+#     - nome HTML4 está errado
+#     - nome PGP está errado
+#     - nome Jarva está errado
+#     - carga 10 do iducrso 5 está errada
+#     - ano 2010 e 2000 do idcurso 4 e 5 estão errados
