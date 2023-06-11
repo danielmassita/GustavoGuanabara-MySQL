@@ -7,7 +7,17 @@
 USE cadastro;
 
 DESCRIBE gafanhotos;
-DESCRIBE cursos;
+DESC cursos;
 
 SELECT * FROM cursos;
+
+# Gerando um DUMP de uma BASE DE DADOS (dump = backup no servidor)
+# MySQL Workbench > Server > Data Export > 
+"""
+(seleciona o schema e os objetos/tabelas)
+(cadastro + cursos + gafanhotos ++ Dump Structure and Data)
+(objects to export > stored procedures + events + triggers)
+(export to self contained file > + include create schema)
+(start export)
+"""
 
