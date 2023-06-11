@@ -30,3 +30,5 @@ INSERT INTO cursos VALUES
 ('8', 'Sapateado', 'Danças Rítmicas', '40', '30', '2018'),
 ('9', 'Cozinha Árabe', 'Aprenda a Fazer Kibe', '40', '30', '2018'),
 ('10', 'YouTuber', 'Gerar Polêmica e Ganhar Inscritos', '5', '2', '2018');
+
+SELECT * FROM cursos;
