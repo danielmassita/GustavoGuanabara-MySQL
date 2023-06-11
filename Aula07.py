@@ -43,3 +43,24 @@ SELECT * FROM cursos;
 #     - nome Jarva está errado
 #     - carga 10 do iducrso 5 está errada
 #     - ano 2010 e 2000 do idcurso 4 e 5 estão errados
+
+# Vamos começar a MANIPULAR essas linhas. Lembrando que para cada COMANDO eu posso MANIPULAR UMA ÚNICA LINHA. 
+# Porém, DENTRO DE UMA LINHA, ou seja, apenas com um COMANDO, eu ainda posso alterar várias COLUNAS ao mesmo tempo.
+# MODIFICANDO LINHAS INCORRETAS
+
+UPDATE cursos
+SET nome = 'HTML5'
+WHERE idcurso = '1';
+# 3	13	23:57:09	UPDATE cursos SET nome = 'HTML5' WHERE idcurso = '1'	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0.062 sec
+
+UPDATE cursos
+SET nome = 'PHP', ano = '2015'
+WHERE idcurso = '4';
+# 3	14	23:58:17	UPDATE cursos  SET nome = 'PHP', ano = '2015'  WHERE idcurso = '4'	1 row(s) affected  Rows matched: 1  Changed: 1  Warnings: 0	0.000 sec
+
+UPDATE cursos
+SET nome = 'Java', carga = '40', ano = '2015'
+WHERE idcurso = '5'
+LIMIT 1; # Esse PARÂMETRO ajuda a aplicar as alterações em APENAS UMA LINHA (ao invés de várias ao mesmo tempo), embora nossa segurança seja o 'idcurso' que é UNIQUE e PRIMARY KEY. 
+# 3	15	00:01:16	UPDATE cursos SET nome = 'Java', carga = '40', ano = '2015' WHERE idcurso = '5' LIMIT 1	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0.000 sec
+
