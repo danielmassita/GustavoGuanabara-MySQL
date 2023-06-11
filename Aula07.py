@@ -64,3 +64,48 @@ WHERE idcurso = '5'
 LIMIT 1; # Esse PARÂMETRO ajuda a aplicar as alterações em APENAS UMA LINHA (ao invés de várias ao mesmo tempo), embora nossa segurança seja o 'idcurso' que é UNIQUE e PRIMARY KEY. 
 # 3	15	00:01:16	UPDATE cursos SET nome = 'Java', carga = '40', ano = '2015' WHERE idcurso = '5' LIMIT 1	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0.000 sec
 
+"""
+1	HTML5	Curso de HTML5	40	37	2014
+2	Algoritmos	Lógica da Programação	20	15	2014
+3	Photoshop	Dicas de Photoshop CC	10	8	2014
+4	PHP	Curso de PHP para Iniciantes	40	20	2015
+5	Java	Introdução à Linguagem Java	40	29	2015
+6	MySQL	Bancos de Dados MySQL	30	15	2016
+7	Word	Curso Completo de Word	40	30	2016
+8	Sapateado	Danças Rítmicas	40	30	2018
+9	Cozinha Árabe	Aprenda a Fazer Kibe	40	30	2018
+10	YouTuber	Gerar Polêmica e Ganhar Inscritos	5	2	2018
+"""
+
+# Agora vamos escrever um teste para ALTERAR VÁRIAS linhas ao mesmo tempo, mas vamos usar um WHERE genérico ao invés do PRIMARY KEY.
+# Edit > Preferences > SQL Editor > UNCHECK Safe Updates > Reconnect to DBMS, pra poder alterar várias linhas ao mesmo tempo.
+UPDATE cursos
+SET ano = '2050', carga = '800'
+WHERE ano = '2018';
+# 3	17	00:05:18	UPDATE cursos SET ano = '2050', carga = '800' WHERE ano = '2018'	3 row(s) affected Rows matched: 3  Changed: 3  Warnings: 0	0.047 sec
+"""
+8	Sapateado	Danças Rítmicas	800	30	2050
+9	Cozinha Árabe	Aprenda a Fazer Kibe	800	30	2050
+10	YouTuber	Gerar Polêmica e Ganhar Inscritos	800	2	2050
+"""
+
+UPDATE cursos
+SET ano = '2018', carga = '0'
+WHERE ano = '2050'
+LIMIT 1; # Usar sempre como batente de segurança! 
+"""
+8	Sapateado	Danças Rítmicas	0	30	2018
+9	Cozinha Árabe	Aprenda a Fazer Kibe	800	30	2050
+10	YouTuber	Gerar Polêmica e Ganhar Inscritos	800	2	2050
+"""
+
+
+
+
+
+
+
+
+
+
+
