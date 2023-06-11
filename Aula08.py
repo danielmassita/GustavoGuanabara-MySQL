@@ -21,3 +21,5 @@ SELECT * FROM cursos;
 (start export)
 """
 
+# Depois de feito o backup, podemos na moral apagar tudo!
+DROP DATABASE cadastro;
