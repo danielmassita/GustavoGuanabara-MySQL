@@ -347,7 +347,53 @@ mysql> SELECT nome, descricao, carga FROM cursos WHERE ano = '2016' ORDER BY nom
 4 rows in set (0.00 sec)
 """
 
+# Uma 'QUERY' é uma pergunta, uma solicitação e que podemos usar o WHERE como uma CONDIÇÃO, com uma EXPRESSÃO RELACIONAL (podemos lembrar dos Operadores Relacionais de Algoritmos).
+SELECT nome, descricao FROM cursos
+WHERE ano <= '2015'
+ORDER BY nome;
+"""
+mysql> SELECT nome, descricao, ano FROM cursos WHERE ano <= '2015' ORDER BY nome;
++------------+----------------------------------+------+
+| nome       | descricao                        | ano  |
++------------+----------------------------------+------+
+| Algoritmos | Lógica de Programação            | 2014 |
+| HTML4      | Curso Básico de HTML, versão 4.0 | 2010 |
+| HTML5      | Curso de HTML5                   | 2014 |
+| Java       | Introdução à Linguagem Java      | 2015 |
+| Photoshop5 | Dicas de Photoshop CC            | 2014 |
+| PHP        | Curso de PHP para iniciantes     | 2015 |
+| PHP4       | Curso de PHP, versão 4.0         | 2010 |
++------------+----------------------------------+------+
+7 rows in set (0.00 sec)
+"""
 
+SELECT nome, descricao, ano FROM cursos
+WHERE ano <= 2015
+ORDER BY ano, nome;
+"""
+mysql> SELECT nome, descricao, ano FROM cursos WHERE ano <= '2015' ORDER BY ano, nome;
++------------+----------------------------------+------+
+| nome       | descricao                        | ano  |
++------------+----------------------------------+------+
+| HTML4      | Curso Básico de HTML, versão 4.0 | 2010 |
+| PHP4       | Curso de PHP, versão 4.0         | 2010 |
+| Algoritmos | Lógica de Programação            | 2014 |
+| HTML5      | Curso de HTML5                   | 2014 |
+| Photoshop5 | Dicas de Photoshop CC            | 2014 |
+| Java       | Introdução à Linguagem Java      | 2015 |
+| PHP        | Curso de PHP para iniciantes     | 2015 |
++------------+----------------------------------+------+
+7 rows in set (0.00 sec)
+"""
+
+#   OPERADORES RELACIONAIS BÁSICOS PODEM SER:
+#       < menor que
+#       <= menor ou igual a
+#       > maior que
+#       >= maior ou igual a
+#       = igual a
+#       != diferente de (not)
+#       <> diferente de (not)
 
 
 
