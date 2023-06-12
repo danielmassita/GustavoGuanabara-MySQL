@@ -133,3 +133,221 @@ SELECT * FROM gafanhotos;
 61	Silvana Albuquerque	Programador	1999-05-22	F	56.00	1.50	Brasil
 """
 
+
+
+# REGISTROS DA TABELA 'CURSOS'
+
+SELECT * FROM cursos; # Selecionando * (todas as colunas) da tabela 'cursos'. Resultados aparecem em ORDEM PRIMÁRIA.
+"""mysql> SELECT * FROM cursos
+    -> LIMIT 5;
++---------+------------+------------------------------+-------+----------+------+
+| idcurso | nome       | descricao                    | carga | totaulas | ano  |
++---------+------------+------------------------------+-------+----------+------+
+|       1 | HTML5      | Curso de HTML5               |    40 |       37 | 2014 |
+|       2 | Algoritmos | Lógica de Programação        |    20 |       15 | 2014 |
+|       3 | Photoshop5 | Dicas de Photoshop CC        |    10 |        8 | 2014 |
+|       4 | PHP        | Curso de PHP para iniciantes |    40 |       20 | 2015 |
+|       5 | Java       | Introdução à Linguagem Java  |    40 |       29 | 2015 |
++---------+------------+------------------------------+-------+----------+------+
+5 rows in set (0.00 sec)"""
+
+SELECT * FROM cursos
+ORDER BY nome; # Ordenar em sentido alfabético [default], mas poderia ser ao reverso usando DESC, ou em ordem DESCentende ou ASCecndente.
+"""
+mysql> SELECT * FROM cursos
+    -> ORDER BY nome
+    -> LIMIT 5;
++---------+---------------+------------------------------------------------------+-------+----------+------+
+| idcurso | nome          | descricao                                            | carga | totaulas | ano  |
++---------+---------------+------------------------------------------------------+-------+----------+------+
+|      23 | After Effects | Curso de Efeitos em Vídeos com After Effects         |    20 |       10 | 2018 |
+|       2 | Algoritmos    | Lógica de Programação                                |    20 |       15 | 2014 |
+|      14 | Android       | Curso de Desenvolvimento de Aplicativos para Android |    60 |       30 | 2018 |
+|      13 | C#            | Curso de C#                                          |    30 |       12 | 2017 |
+|      12 | C++           | Curso de C++ com Orientação a Objetos                |    40 |       25 | 2017 |
++---------+---------------+------------------------------------------------------+-------+----------+------+
+5 rows in set (0.00 sec)
+"""
+
+SELECT * FROM cursos
+ORDER BY nome ASC; # Método em ordem ASCENDENTE.
+"""
+mysql> SELECT * FROM cursos
+    -> ORDER BY nome ASC
+    -> LIMIT 5;
++---------+---------------+------------------------------------------------------+-------+----------+------+
+| idcurso | nome          | descricao                                            | carga | totaulas | ano  |
++---------+---------------+------------------------------------------------------+-------+----------+------+
+|      23 | After Effects | Curso de Efeitos em Vídeos com After Effects         |    20 |       10 | 2018 |
+|       2 | Algoritmos    | Lógica de Programação                                |    20 |       15 | 2014 |
+|      14 | Android       | Curso de Desenvolvimento de Aplicativos para Android |    60 |       30 | 2018 |
+|      13 | C#            | Curso de C#                                          |    30 |       12 | 2017 |
+|      12 | C++           | Curso de C++ com Orientação a Objetos                |    40 |       25 | 2017 |
++---------+---------------+------------------------------------------------------+-------+----------+------+
+5 rows in set (0.00 sec)
+"""
+
+SELECT * FROM cursos
+ORDER BY nome DESC;  # Método em ordem DESCENDENTE.
+"""
+mysql> SELECT * FROM cursos
+    -> ORDER BY nome DESC
+    -> LIMIT 5;
++---------+-----------+--------------------------------------------------+-------+----------+------+
+| idcurso | nome      | descricao                                        | carga | totaulas | ano  |
++---------+-----------+--------------------------------------------------+-------+----------+------+
+|      24 | WordPress | Curso de Criação de Sites com WordPress          |    60 |       30 | 2019 |
+|       7 | Word      | Curso completo de Word                           |    40 |       30 | 2016 |
+|      17 | Swift     | Curso de Desenvolvimento de Aplicativos para iOS |    60 |       30 | 2019 |
+|      21 | SEO       | Curso de Otimização de Sites                     |    30 |       12 | 2017 |
+|      20 | Segurança | Curso de Segurança                               |    15 |        8 | 2018 |
++---------+-----------+--------------------------------------------------+-------+----------+------+
+5 rows in set (0.00 sec)
+"""
+
+SELECT nome, carga, ano FROM cursos # Seleciona apenas as COLUNAS nome, carga, ano e ORDENA por NOME asc
+ORDER BY nome; 
+"""
+mysql> SELECT nome, carga, ano FROM cursos
+    -> ORDER BY nome
+    -> LIMIT 5;
++---------------+-------+------+
+| nome          | carga | ano  |
++---------------+-------+------+
+| After Effects |    20 | 2018 |
+| Algoritmos    |    20 | 2014 |
+| Android       |    60 | 2018 |
+| C#            |    30 | 2017 |
+| C++           |    40 | 2017 |
++---------------+-------+------+
+5 rows in set (0.00 sec)
+"""
+
+SELECT ano, nome, carga FROM cursos
+ORDER BY nome;
+"""mysql> SELECT ano, nome, carga FROM cursos
+    -> ORDER BY nome
+    -> LIMIT 5;
++------+---------------+-------+
+| ano  | nome          | carga |
++------+---------------+-------+
+| 2018 | After Effects |    20 |
+| 2014 | Algoritmos    |    20 |
+| 2018 | Android       |    60 |
+| 2017 | C#            |    30 |
+| 2017 | C++           |    40 |
++------+---------------+-------+
+5 rows in set (0.00 sec)"""
+
+SELECT ano, nome, carga FROM cursos
+ORDER BY ano;
+"""
+mysql> SELECT ano, nome, carga FROM cursos
+    -> ORDER BY ano
+    -> LIMIT 5;
++------+------------+-------+
+| ano  | nome       | carga |
++------+------------+-------+
+| 2010 | PHP4       |    30 |
+| 2010 | HTML4      |    20 |
+| 2014 | HTML5      |    40 |
+| 2014 | Algoritmos |    20 |
+| 2014 | Photoshop5 |    10 |
++------+------------+-------+
+5 rows in set (0.00 sec)
+"""
+
+SELECT ano, nome, carga FROM cursos
+ORDER BY ano, nome;
+"""
+mysql> SELECT ano, nome, carga FROM cursos
+    -> ORDER BY ano, nome
+    -> LIMIT 5;
++------+------------+-------+
+| ano  | nome       | carga |
++------+------------+-------+
+| 2010 | HTML4      |    20 |
+| 2010 | PHP4       |    30 |
+| 2014 | Algoritmos |    20 |
+| 2014 | HTML5      |    40 |
+| 2014 | Photoshop5 |    10 |
++------+------------+-------+
+5 rows in set (0.00 sec)
+"""
+
+
+
+# SELECIONANDO LINHAS (usar a cláusula WHERE!)
+SELECT * FROM cursos
+ORDER BY nome;
+"""
+mysql> SELECT * FROM cursos
+    -> ORDER BY nome
+    -> LIMIT 5;
++---------+---------------+------------------------------------------------------+-------+----------+------+
+| idcurso | nome          | descricao                                            | carga | totaulas | ano  |
++---------+---------------+------------------------------------------------------+-------+----------+------+
+|      23 | After Effects | Curso de Efeitos em Vídeos com After Effects         |    20 |       10 | 2018 |
+|       2 | Algoritmos    | Lógica de Programação                                |    20 |       15 | 2014 |
+|      14 | Android       | Curso de Desenvolvimento de Aplicativos para Android |    60 |       30 | 2018 |
+|      13 | C#            | Curso de C#                                          |    30 |       12 | 2017 |
+|      12 | C++           | Curso de C++ com Orientação a Objetos                |    40 |       25 | 2017 |
++---------+---------------+------------------------------------------------------+-------+----------+------+
+5 rows in set (0.00 sec)
+"""
+
+SELECT * FROM cursos
+WHERE ano = '2016'
+ORDER BY nome;
+"""
+mysql> SELECT * FROM cursos WHERE ano = '2016' ORDER BY nome;
++---------+-------+------------------------------------------+-------+----------+------+
+| idcurso | nome  | descricao                                | carga | totaulas | ano  |
++---------+-------+------------------------------------------+-------+----------+------+
+|       6 | MySQL | Bancos de Dados MySQL                    |    30 |       15 | 2016 |
+|       9 | POO   | Curso de Programação Orientada a Objetos |    60 |       35 | 2016 |
+|      19 | Redes | Curso de Redes para Iniciantes           |    40 |       15 | 2016 |
+|       7 | Word  | Curso completo de Word                   |    40 |       30 | 2016 |
++---------+-------+------------------------------------------+-------+----------+------+
+4 rows in set (0.00 sec)
+"""
+
+SELECT nome, carga FROM cursos
+WHERE ano = '2016'
+ORDER BY nome;
+"""
+mysql> SELECT nome, carga FROM cursos WHERE ano = '2016' ORDER BY nome;
++-------+-------+
+| nome  | carga |
++-------+-------+
+| MySQL |    30 |
+| POO   |    60 |
+| Redes |    40 |
+| Word  |    40 |
++-------+-------+
+4 rows in set (0.00 sec)
+"""
+
+# 'RESULT SET' é o resultado de uma consulta ('QUERY')! 
+# Guardar a palavra 'result set' e 'query'.
+
+SELECT nome, descricao, carga FROM cursos
+WHERE ano = '2016'
+ORDER BY nome;
+"""
+mysql> SELECT nome, descricao, carga FROM cursos WHERE ano = '2016' ORDER BY nome;
++-------+------------------------------------------+-------+
+| nome  | descricao                                | carga |
++-------+------------------------------------------+-------+
+| MySQL | Bancos de Dados MySQL                    |    30 |
+| POO   | Curso de Programação Orientada a Objetos |    60 |
+| Redes | Curso de Redes para Iniciantes           |    40 |
+| Word  | Curso completo de Word                   |    40 |
++-------+------------------------------------------+-------+
+4 rows in set (0.00 sec)
+"""
+
+
+
+
+
