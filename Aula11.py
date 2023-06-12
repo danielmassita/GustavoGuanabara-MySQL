@@ -395,5 +395,135 @@ mysql> SELECT nome, descricao, ano FROM cursos WHERE ano <= '2015' ORDER BY ano,
 #       != diferente de (not)
 #       <> diferente de (not)
 
+# SELECIONANDO INTERVALOS - OPERADOR BETWEEN
+SELECT * FROM cursos
+WHERE (____________________)
+ORDER BY nome;
+
+SELECT * FROM cursos
+WHERE totaulas BETWEEN '20' and '30'
+ORDER BY nome;
+"""
+mysql> SELECT * FROM cursos
+    -> WHERE totaulas BETWEEN '20' and '30'
+    -> ORDER BY nome;
++---------+-----------+------------------------------------------------------+-------+----------+------+
+| idcurso | nome      | descricao                                            | carga | totaulas | ano  |
++---------+-----------+------------------------------------------------------+-------+----------+------+
+|      14 | Android   | Curso de Desenvolvimento de Aplicativos para Android |    60 |       30 | 2018 |
+|      12 | C++       | Curso de C++ com Orientação a Objetos                |    40 |       25 | 2017 |
+|      10 | Excel     | Curso completo de Excel                              |    40 |       30 | 2017 |
+|       5 | Java      | Introdução à Linguagem Java                          |    40 |       29 | 2015 |
+|      25 | Joomla    | Curso de Criação de Sites com Joomla                 |    60 |       30 | 2019 |
+|      26 | Magento   | Curso de Criação de Lojas Virtuais com Magento       |    50 |       25 | 2019 |
+|       4 | PHP       | Curso de PHP para iniciantes                         |    40 |       20 | 2015 |
+|      29 | PHP7      | Curso de PHP, versão 7.0                             |    40 |       20 | 2020 |
+|      17 | Swift     | Curso de Desenvolvimento de Aplicativos para iOS     |    60 |       30 | 2019 |
+|       7 | Word      | Curso completo de Word                               |    40 |       30 | 2016 |
+|      24 | WordPress | Curso de Criação de Sites com WordPress              |    60 |       30 | 2019 |
++---------+-----------+------------------------------------------------------+-------+----------+------+
+11 rows in set (0.14 sec)
+"""
+
+SELECT nome, ano FROM cursos
+WHERE ano BETWEEN '2014' AND '2016'
+ORDER BY ano DESC, nome ASC;
+"""
+mysql> SELECT nome, ano FROM cursos WHERE ano BETWEEN '2014' AND '2016' ORDER BY ano DESC, nome ASC;
++------------+------+
+| nome       | ano  |
++------------+------+
+| MySQL      | 2016 |
+| POO        | 2016 |
+| Redes      | 2016 |
+| Word       | 2016 |
+| Java       | 2015 |
+| PHP        | 2015 |
+| Algoritmos | 2014 |
+| HTML5      | 2014 |
+| Photoshop5 | 2014 |
++------------+------+
+9 rows in set (0.00 sec)
+"""
+
+# SELECIONANDO VALORES
+SELECT idcurso, nome FROM cursos
+WHERE ano IN ('2014', '2016', '2018') # valores específicos que contenham (diferente de faixas de valores)
+ORDER BY nome;
+"""
+mysql> SELECT idcurso, nome FROM cursos
+    -> WHERE ano IN ('2014', '2016', '2018')
+    -> ORDER BY nome;
++---------+----------------+
+| idcurso | nome           |
++---------+----------------+
+|      23 | After Effects  |
+|       2 | Algoritmos     |
+|      14 | Android        |
+|       1 | HTML5          |
+|       6 | MySQL          |
+|       3 | Photoshop5     |
+|       9 | POO            |
+|      16 | PowerPoint     |
+|      19 | Redes          |
+|      11 | Responsividade |
+|      20 | Segurança      |
+|       7 | Word           |
++---------+----------------+
+12 rows in set (0.02 sec)
+"""
+
+SELECT nome, descricao, ano FROM cursos
+WHERE ano IN (2014, 2016) # o IN ele seleciona exclusivamente e individualmente os valores 2014 e 2016, diferente do exemplo a seguir com between.
+ORDER BY ano;
+"""
+mysql> SELECT nome, descricao, ano FROM cursos
+    -> WHERE ano IN (2014, 2016)
+    -> ORDER BY ano;
++------------+------------------------------------------+------+
+| nome       | descricao                                | ano  |
++------------+------------------------------------------+------+
+| HTML5      | Curso de HTML5                           | 2014 |
+| Algoritmos | Lógica de Programação                    | 2014 |
+| Photoshop5 | Dicas de Photoshop CC                    | 2014 |
+| MySQL      | Bancos de Dados MySQL                    | 2016 |
+| Word       | Curso completo de Word                   | 2016 |
+| POO        | Curso de Programação Orientada a Objetos | 2016 |
+| Redes      | Curso de Redes para Iniciantes           | 2016 |
++------------+------------------------------------------+------+
+7 rows in set (0.00 sec)
+"""
+
+SELECT nome, descricao, ano FROM cursos
+WHERE ano BETWEEN 2014 AND 2016 # o BETWEEN ele seleciona o RANGE entre os valores 2014 e 2016, diferente do exemplo a anterior com IN.
+ORDER BY ano;
+"""
+mysql> SELECT nome, descricao, ano FROM cursos
+    -> WHERE ano BETWEEN 2014 AND 2016
+    -> ORDER BY ano;
++------------+------------------------------------------+------+
+| nome       | descricao                                | ano  |
++------------+------------------------------------------+------+
+| HTML5      | Curso de HTML5                           | 2014 |
+| Algoritmos | Lógica de Programação                    | 2014 |
+| Photoshop5 | Dicas de Photoshop CC                    | 2014 |
+| PHP        | Curso de PHP para iniciantes             | 2015 |
+| Java       | Introdução à Linguagem Java              | 2015 |
+| MySQL      | Bancos de Dados MySQL                    | 2016 |
+| Word       | Curso completo de Word                   | 2016 |
+| POO        | Curso de Programação Orientada a Objetos | 2016 |
+| Redes      | Curso de Redes para Iniciantes           | 2016 |
++------------+------------------------------------------+------+
+9 rows in set (0.00 sec)
+"""
+
+
+
+
+
+
+
+
+
 
 
