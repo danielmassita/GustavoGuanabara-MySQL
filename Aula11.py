@@ -605,9 +605,42 @@ mysql> SELECT nome, carga, totaulas FROM cursos
 30 rows in set (0.00 sec)
 """
 
+# Vamos relembrar o quadro da Paula e Quézia, e queremos saber:
 
+# Quero que Paula E Quézia (AND) estejam felizes:
+"""
+Paula    |    Quézia    |    Estou feliz por elas?
+:)                :)                :)    (ambas felizes, oba!)
+:)                :/                :/    (apenas uma feliz, que pena)
+:/                :)                :/    (apenas uma feliz, que pena)
+:/                :/                :/    (ambas tristes, que pena)
+"""
 
+# Quero Paula OU Quézia (OR) estejam felizes:
+"""
+Paula    |    Quézia    |    Estou feliz por elas?
+:)                :)                :)    (ambas felizes, oba!)
+:)                :/                :)    (ao menos uma feliz, oba!)
+:/                :)                :)    (ao menos uma feliz, oba!)
+:/                :/                :/    (ambas tristes, que pena)
+"""
 
+# Classificação dos Comandos em SQL
+# DDL (Data Definition Language):
+#       CREATE DATABASE
+#       CREATE TABLE
+#       ALTER TABLE
+#       DROP TABLE
+
+# DML (Data Manipulation Language):
+#       INSERT INTO
+#       UPDATE
+#       DELETE
+#       TRUNCATE
+
+# DQL (Data Query Language - linguagem pra perguntas, qüestionamentos, REQUISIÇÕES - Query!):
+#       SELECT
+# 
 
 
 
