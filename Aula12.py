@@ -782,7 +782,8 @@ DESCRIBE gafanhotos;
 
 # 1 - Uma lista com o nome de todas as gafanhotas.
 
-SELECT nome FROM gafanhotos WHERE sexo = 'F' ORDER BY nome ASC;
+SELECT nome FROM gafanhotos WHERE sexo =`F` ORDER BY nome ASC;
+
 """mysql> SELECT nome FROM gafanhotos WHERE sexo = 'F' ORDER BY nome;
 +------------------------+
 | nome                   |
@@ -814,13 +815,171 @@ SELECT nome FROM gafanhotos WHERE sexo = 'F' ORDER BY nome ASC;
 
 
 # 2 - Uma lista com os dados de todos aqueles que nasceram entre 1-Jan-2000 e 31-Dez-2015.
-SELECT * FROM gafanhotos WHERE nascimento
+
+SELECT * FROM gafanhotos WHERE nascimento BETWEEN '2000-01-01' AND '2015-12-31'; 
+
+"""mysql> SELECT * FROM gafanhotos WHERE nascimento BETWEEN '2000-01-01' AND '2015-12-31';
++----+---------------------------+----------------------+------------+------+--------+--------+---------------+
+| id | nome                      | profissao            | nascimento | sexo | peso   | altura | nacionalidade |
++----+---------------------------+----------------------+------------+------+--------+--------+---------------+
+|  8 | Carlisson Rosa            | Professor            | 2010-08-01 | M    |  78.22 |   1.98 | Brasil        |
+| 16 | Elvis Schwarz             | Dentista             | 2011-05-07 | M    |  66.69 |   1.76 | EUA           |
+| 20 | Marcos Dissotti           | Empreendedor         | 2010-01-01 | M    |  53.79 |   1.54 | Portugal      |
+| 21 | Ana Carolina Mendes       | Ator                 | 2000-12-15 | F    |  88.30 |   1.54 | Brasil        |
+| 22 | Guilherme de Sousa        | Dentista             | 2001-05-18 | M    | 132.70 |   1.97 | Moçambique    |
+| 23 | Bruno Torres              | Auxiliar Administrat | 2000-01-30 | M    |  44.65 |   1.65 | Brasil        |
+| 27 | Monique Precivalli        | Auxiliar Administrat | 2013-12-30 | F    |  48.20 |   1.22 | Brasil        |
+| 32 | Roberto Luiz Debarba      | Ator                 | 2007-01-09 | M    |  77.44 |   1.56 | Brasil        |
+| 33 | Jarismar Andrade          | Dentista             | 2000-06-23 | F    |  63.70 |   1.33 | Brasil        |
+| 35 | Márcio Mello              | Programador          | 2011-11-20 | M    |  54.11 |   1.55 | EUA           |
+| 36 | Robson Rodolpho           | Auxiliar Administrat | 2000-08-08 | M    | 110.10 |   1.76 | Brasil        |
+| 37 | Daniele Moledo            | Empreendedor         | 2006-08-11 | F    | 101.30 |   1.99 | Brasil        |
+| 39 | Neriton Dias              | Auxiliar Administrat | 2009-10-30 | M    |  48.99 |   1.29 | Brasil        |
+| 41 | Isaias Buscarino          | Dentista             | 2001-01-07 | M    |  99.90 |   1.55 | Moçambique    |
+| 46 | Diogo Padilha             | Auxiliar Administrat | 2000-03-03 | M    |  54.34 |   1.88 | Angola        |
+| 49 | Silvio Ricardo            | Programador          | 2012-03-12 | M    |  65.99 |   1.23 | EUA           |
+| 50 | Denilson Barbosa da Silva | Empreendedor         | 2000-01-08 | M    |  97.30 |   2.00 | Brasil        |
+| 58 | Carlos Camargo            | Programador          | 2005-02-22 | M    | 124.65 |   1.33 | Brasil        |
+| 59 | Philppe Oliveira          | Auxiliar Administrat | 2000-05-23 | M    | 105.10 |   2.19 | Brasil        |
++----+---------------------------+----------------------+------------+------+--------+--------+---------------+
+19 rows in set (0.00 sec)"""
 
 
 # 3 - Uma lista com o nome de todos os homens que trabalham como Programador.
+
+SELECT nome FROM gafanhotos
+WHERE profissao = `Programador` AND sexo = `M` ORDER BY nome;
+
+"""mysql> SELECT nome FROM gafanhotos
+    -> WHERE profissao = 'Programador' and sexo = 'M'
+    -> ORDER BY nome;
++-----------------+
+| nome            |
++-----------------+
+| Allan Silva     |
+| Anderson Rafael |
+| Andre Santini   |
+| André Schmidt   |
+| Carlos Camargo  |
+| Emerson Gabriel |
+| Jackson Telles  |
+| Márcio Mello    |
+| Raian Porto     |
+| Ruan Valente    |
+| Silvio Ricardo  |
++-----------------+
+11 rows in set (0.00 sec)"""
+
+
 # 4 - Uma lista com os dados de todas as mulheres que nasceram no Brasil e que têm seu nome iniciando com a letra J.
+
+SELECT * FROM gafanhotos WHERE sexo = `F` AND nacionalidade = `Brasil` AND nome LIKE `J%`;
+
+"""mysql> SELECT * FROM gafanhotos
+    -> WHERE sexo = 'F'
+    -> AND nacionalidade = 'Brasil'
+    -> AND nome LIKE 'J%';
++----+------------------+-----------+------------+------+-------+--------+---------------+
+| id | nome             | profissao | nascimento | sexo | peso  | altura | nacionalidade |
++----+------------------+-----------+------------+------+-------+--------+---------------+
+| 33 | Jarismar Andrade | Dentista  | 2000-06-23 | F    | 63.70 |   1.33 | Brasil        |
++----+------------------+-----------+------------+------+-------+--------+---------------+
+1 row in set (0.00 sec)"""
+
+
 # 5 - Uma lista com o nome e a nacionalidade de todos os homens que têm Silva no nome, não nasceram no Brasil e pesam menos de 100 kg.
-# 6 - Qual é a maior altura entre gafanhotos homens brasileiros?  
+
+SELECT nome, nacionalidade FROM gafanhotos
+WHERE sexo = 'M'
+AND nome LIKE '%silva%'
+AND nacionalidade != 'Brasil'
+AND peso < '100';
+
+"""mysql> SELECT nome, nacionalidade FROM gafanhotos
+    -> WHERE sexo = 'M'
+    -> AND nome LIKE '%silva%'
+    -> AND nacionalidade != 'Brasil'
+    -> AND peso < '100';
++----------------+---------------+
+| nome           | nacionalidade |
++----------------+---------------+
+| Herisson Silva | EUA           |
++----------------+---------------+
+1 row in set (0.00 sec)"""
+
+
+# 6 - Qual é a maior altura entre gafanhotos homens brasileiros?
+
+SELECT max(altura) WHERE sexo = 'M' AND nacionalidade = 'Brasil';
+
+"""mysql> SELECT max(altura) FROM gafanhotos
+    -> WHERE sexo = 'M'
+    -> AND nacionalidade = 'Brasil';
++-------------+
+| max(altura) |
++-------------+
+|        2.35 |
++-------------+
+1 row in set (0.00 sec)"""
+
+
 # 7 - Qual é a média de peso dos gafanhotos cadastrados?
+
+SELECT AVG(peso) FROM gafanhotos;
+
+"""mysql> SELECT AVG(peso) FROM gafanhotos;
++-----------+
+| AVG(peso) |
++-----------+
+| 73.967705 |
++-----------+
+1 row in set (0.00 sec)"""
+
+
 # 8 - Qual o menor peso entre as gafanhotas mulheres que nasceram fora do Brasil entre 01-Jan-1990 e 31-Dez-2000?
+
+SELECT min(peso) FROM gafanhotos WHERE sexo = `F` AND nacionalidade <> `Brasil` AND nascimento BETWEEN `1990-01-01` AND `2000-12-31`;
+
+"""mysql> SELECT min(peso) FROM gafanhotos
+    -> WHERE sexo = 'F'
+    -> AND nacionalidade <> 'Brasil'
+    -> AND nascimento BETWEEN '1990-01-01' AND '2000-12-31';
++-----------+
+| min(peso) |
++-----------+
+|     35.90 |
++-----------+
+1 row in set (0.00 sec)"""
+
+
 # 9 - Quantas gafanhotas mulheres tem mais de 1.90 m de altura?
+
+# Podemos fazer em duas etapas, primeiro: 
+SELECT * FROM gafanhotos WHERE sexo = `F` AND altura > `1.90`;
+
+# E depois, podemos filtrar o totalizador desses registros:
+SELECT COUNT(*) FROM gafanhotos WHERE sexo = `F` AND altura > `1.90`;
+
+"""mysql> SELECT * FROM gafanhotos
+    -> WHERE altura > '1.90'
+    -> AND sexo = 'F';
++----+------------------------+--------------+------------+------+--------+--------+---------------+
+| id | nome                   | profissao    | nascimento | sexo | peso   | altura | nacionalidade |
++----+------------------------+--------------+------------+------+--------+--------+---------------+
+|  5 | Leila Martins          | Farmacêutico | 1975-04-22 | F    |  99.00 |   2.15 | Brasil        |
+|  6 | Letícia Neves          | Programador  | 1999-12-03 | F    |  87.00 |   2.00 | Brasil        |
+| 37 | Daniele Moledo         | Empreendedor | 2006-08-11 | F    | 101.30 |   1.99 | Brasil        |
+| 43 | Ana Carolina Hernandes | Ator         | 1970-10-11 | F    |  65.40 |   2.08 | EUA           |
+| 48 | Elaine Nunes           | Programador  | 1998-08-15 | F    |  35.90 |   2.00 | Canadá        |
++----+------------------------+--------------+------------+------+--------+--------+---------------+
+5 rows in set (0.00 sec)"""
+
+"""mysql> SELECT COUNT(*) FROM gafanhotos
+    -> WHERE altura > '1.90'
+    -> AND sexo = 'F';
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)"""
