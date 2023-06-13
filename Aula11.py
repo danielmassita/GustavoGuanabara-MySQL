@@ -446,9 +446,10 @@ mysql> SELECT nome, ano FROM cursos WHERE ano BETWEEN '2014' AND '2016' ORDER BY
 9 rows in set (0.00 sec)
 """
 
-# SELECIONANDO VALORES
+# SELECIONANDO VALORES ESPECÍFICOS (in != between)
+
 SELECT idcurso, nome FROM cursos
-WHERE ano IN ('2014', '2016', '2018') # valores específicos que contenham (diferente de faixas de valores)
+WHERE ano IN ('2014', '2016', '2018') # valores específicos que estão contidos na 'lista' (diferente valores e específicos)
 ORDER BY nome;
 """
 mysql> SELECT idcurso, nome FROM cursos
@@ -474,7 +475,7 @@ mysql> SELECT idcurso, nome FROM cursos
 """
 
 SELECT nome, descricao, ano FROM cursos
-WHERE ano IN (2014, 2016) # o IN ele seleciona exclusivamente e individualmente os valores 2014 e 2016, diferente do exemplo a seguir com between.
+WHERE ano IN (2014, 2016) # o IN seleciona exclusivamente e individualmente os valores 2014 e 2016, diferente do exemplo a seguir com between.
 ORDER BY ano;
 """
 mysql> SELECT nome, descricao, ano FROM cursos
@@ -495,7 +496,7 @@ mysql> SELECT nome, descricao, ano FROM cursos
 """
 
 SELECT nome, descricao, ano FROM cursos
-WHERE ano BETWEEN 2014 AND 2016 # o BETWEEN ele seleciona o RANGE entre os valores 2014 e 2016, diferente do exemplo a anterior com IN.
+WHERE ano BETWEEN 2014 AND 2016 # o BETWEEN ele seleciona o RANGE entre os valores 2014 e 2016 (de 2014 até 2016, 2015 incluso), diferente do exemplo anterior com IN.
 ORDER BY ano;
 """
 mysql> SELECT nome, descricao, ano FROM cursos
@@ -517,8 +518,92 @@ mysql> SELECT nome, descricao, ano FROM cursos
 9 rows in set (0.00 sec)
 """
 
+# Além dos OPERADORES RELACIONAIS (<, <=, >, >=, =, !=, <>, between, in)
+# Temos também os OPERADORES LÓGICOS, assim como nos algoritmos, e nós podemos combinar os Operadores Relacionais criando Expressões Lógicas mais potentes.
 
+# COMBINANDO TESTES
 
+SELECT * FROM cursos
+WHERE (carga > 35) AND (totaulas < 30)
+ORDER BY nome;
+"""
+mysql> SELECT * FROM cursos
+    -> WHERE carga > 35 and totaulas < 30
+    -> ORDER BY nome;
++---------+---------+------------------------------------------------+-------+----------+------+
+| idcurso | nome    | descricao                                      | carga | totaulas | ano  |
++---------+---------+------------------------------------------------+-------+----------+------+
+|      12 | C++     | Curso de C++ com Orientação a Objetos          |    40 |       25 | 2017 |
+|       5 | Java    | Introdução à Linguagem Java                    |    40 |       29 | 2015 |
+|      26 | Magento | Curso de Criação de Lojas Virtuais com Magento |    50 |       25 | 2019 |
+|       4 | PHP     | Curso de PHP para iniciantes                   |    40 |       20 | 2015 |
+|      29 | PHP7    | Curso de PHP, versão 7.0                       |    40 |       20 | 2020 |
+|       8 | Python  | Curso de Python                                |    40 |       18 | 2017 |
+|      19 | Redes   | Curso de Redes para Iniciantes                 |    40 |       15 | 2016 |
++---------+---------+------------------------------------------------+-------+----------+------+
+7 rows in set (0.00 sec)
+"""
+
+SELECT nome, carga, totaulas FROM cursos
+WHERE carga > 35 and totaulas < 30; # O AND é um excludente, então os resultados devem, AO MESMO TEMPO, ter carga > 35 E totaulas < 30.
+"""
+mysql> SELECT nome, carga, totaulas FROM cursos
+    -> WHERE carga > 35 and totaulas < 30;
++---------+-------+----------+
+| nome    | carga | totaulas |
++---------+-------+----------+
+| PHP     |    40 |       20 |
+| Java    |    40 |       29 |
+| Python  |    40 |       18 |
+| C++     |    40 |       25 |
+| Redes   |    40 |       15 |
+| Magento |    50 |       25 |
+| PHP7    |    40 |       20 |
++---------+-------+----------+
+7 rows in set (0.00 sec)
+"""
+
+SELECT nome, carga, totaulas FROM cursos
+WHERE carga > 35 OR totaulas < 30; # O operador lógico OR (OU) aceita resultados que cumpram carga > 35, OU totaulas < 30, OU ambas. 
+"""
+mysql> SELECT nome, carga, totaulas FROM cursos
+    -> WHERE carga > 35 OR totaulas < 30;
++--------------------+-------+----------+
+| nome               | carga | totaulas |
++--------------------+-------+----------+
+| HTML5              |    40 |       37 |
+| Algoritmos         |    20 |       15 |
+| Photoshop5         |    10 |        8 |
+| PHP                |    40 |       20 |
+| Java               |    40 |       29 |
+| MySQL              |    30 |       15 |
+| Word               |    40 |       30 |
+| Python             |    40 |       18 |
+| POO                |    60 |       35 |
+| Excel              |    40 |       30 |
+| Responsividade     |    30 |       15 |
+| C++                |    40 |       25 |
+| C#                 |    30 |       12 |
+| Android            |    60 |       30 |
+| JavaScript         |    35 |       18 |
+| PowerPoint         |    30 |       12 |
+| Swift              |    60 |       30 |
+| Hardware           |    30 |       12 |
+| Redes              |    40 |       15 |
+| Segurança          |    15 |        8 |
+| SEO                |    30 |       12 |
+| Premiere           |    20 |       10 |
+| After Effects      |    20 |       10 |
+| WordPress          |    60 |       30 |
+| Joomla             |    60 |       30 |
+| Magento            |    50 |       25 |
+| Modelagem de Dados |    30 |       12 |
+| HTML4              |    20 |        9 |
+| PHP7               |    40 |       20 |
+| PHP4               |    30 |       11 |
++--------------------+-------+----------+
+30 rows in set (0.00 sec)
+"""
 
 
 
