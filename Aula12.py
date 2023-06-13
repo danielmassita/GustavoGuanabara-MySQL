@@ -245,3 +245,131 @@ mysql> SELECT * FROM cursos
 +---------+------------+--------------------------+-------+----------+------+
 3 rows in set (0.00 sec)
 """
+
+SELECT * FROM cursos
+WHERE nome LIKE 'P%';
+"""
+mysql> SELECT * FROM cursos
+    -> WHERE nome LIKE 'P%';
++---------+------------+------------------------------------------+-------+----------+------+
+| idcurso | nome       | descricao                                | carga | totaulas | ano  |
++---------+------------+------------------------------------------+-------+----------+------+
+|       3 | Photoshop5 | Dicas de Photoshop CC                    |    10 |        8 | 2014 |
+|       4 | PHP        | Curso de PHP para iniciantes             |    40 |       20 | 2015 |
+|      30 | PHP4       | Curso de PHP, versão 4.0                 |    30 |       11 | 2010 |
+|      29 | PHP7       | Curso de PHP, versão 7.0                 |    40 |       20 | 2020 |
+|       9 | POO        | Curso de Programação Orientada a Objetos |    60 |       35 | 2016 |
+|      16 | PowerPoint | Curso completo de PowerPoint             |    30 |       12 | 2018 |
+|      22 | Premiere   | Curso de Edição de Vídeos com Premiere   |    20 |       10 | 2017 |
+|       8 | Python     | Curso de Python                          |    40 |       18 | 2017 |
++---------+------------+------------------------------------------+-------+----------+------+
+8 rows in set (0.00 sec)
+"""
+
+SELECT * FROM cursos
+WHERE nome LIKE 'p_p%';
+"""
+mysql> SELECT * FROM cursos
+    -> WHERE nome LIKE 'p_p%';
++---------+------+------------------------------+-------+----------+------+
+| idcurso | nome | descricao                    | carga | totaulas | ano  |
++---------+------+------------------------------+-------+----------+------+
+|       4 | PHP  | Curso de PHP para iniciantes |    40 |       20 | 2015 |
+|      30 | PHP4 | Curso de PHP, versão 4.0     |    30 |       11 | 2010 |
+|      29 | PHP7 | Curso de PHP, versão 7.0     |    40 |       20 | 2020 |
++---------+------+------------------------------+-------+----------+------+
+3 rows in set (0.00 sec)
+"""
+
+SELECT * FROM cursos
+WHERE nome LIKE 'p__t%';
+"""
+mysql> SELECT * FROM cursos
+    -> WHERE nome LIKE 'p__t%';
++---------+------------+-----------------------+-------+----------+------+
+| idcurso | nome       | descricao             | carga | totaulas | ano  |
++---------+------------+-----------------------+-------+----------+------+
+|       3 | Photoshop5 | Dicas de Photoshop CC |    10 |        8 | 2014 |
++---------+------------+-----------------------+-------+----------+------+
+1 row in set (0.00 sec)
+"""
+
+SELECT * FROM gafanhotos
+WHERE nome LIKE '%silva%';
+"""
+mysql> SELECT * FROM gafanhotos
+    -> WHERE nome LIKE '%silva%';
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| id | nome                      | profissao            | nascimento | sexo | peso  | altura | nacionalidade |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| 13 | Allan Silva               | Programador          | 1993-11-11 | M    | 76.99 |   1.55 | Brasil        |
+| 28 | Herisson Silva            | Auxiliar Administrat | 1965-10-10 | M    | 74.65 |   1.56 | EUA           |
+| 50 | Denilson Barbosa da Silva | Empreendedor         | 2000-01-08 | M    | 97.30 |   2.00 | Brasil        |
+| 61 | Silvana Albuquerque       | Programador          | 1999-05-22 | F    | 56.00 |   1.50 | Brasil        |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+4 rows in set (0.00 sec)
+"""
+
+UPDATE `cadastro`.`gafanhotos` SET `id` = '', `nome` = '', `profissao` = '', `nascimento` = '', `sexo` = '', `peso` = '', `altura` = '', `nacionalidade` = '' WHERE (`id` = '61');
+DELETE FROM `cadastro`.`gafanhotos` WHERE (`id` = '61');
+
+SELECT * FROM gafanhotos
+WHERE nome LIKE '%silva%';
+"""
+mysql> SELECT * FROM gafanhotos
+    -> WHERE nome LIKE '%silva%';
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| id | nome                      | profissao            | nascimento | sexo | peso  | altura | nacionalidade |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| 13 | Allan Silva               | Programador          | 1993-11-11 | M    | 76.99 |   1.55 | Brasil        |
+| 28 | Herisson Silva            | Auxiliar Administrat | 1965-10-10 | M    | 74.65 |   1.56 | EUA           |
+| 50 | Denilson Barbosa da Silva | Empreendedor         | 2000-01-08 | M    | 97.30 |   2.00 | Brasil        |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+3 rows in set (0.00 sec)
+"""
+
+INSERT INTO `cadastro`.`gafanhotos` (`id`, `nome`, `profissao`, `nascimento`, `sexo`, `peso`, `altura`, `nacionalidade`) VALUES ('61', 'Silvana Albuquerque', 'Programador', '1999-05-22', 'F', '56', '1.5', 'Brasil');
+SELECT * FROM gafanhotos
+WHERE nome LIKE '%silva%';
+"""
+mysql> SELECT * FROM gafanhotos
+    -> WHERE nome LIKE '%silva%';
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| id | nome                      | profissao            | nascimento | sexo | peso  | altura | nacionalidade |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| 13 | Allan Silva               | Programador          | 1993-11-11 | M    | 76.99 |   1.55 | Brasil        |
+| 28 | Herisson Silva            | Auxiliar Administrat | 1965-10-10 | M    | 74.65 |   1.56 | EUA           |
+| 50 | Denilson Barbosa da Silva | Empreendedor         | 2000-01-08 | M    | 97.30 |   2.00 | Brasil        |
+| 61 | Silvana Albuquerque       | Programador          | 1999-05-22 | F    | 56.00 |   1.50 | Brasil        |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+4 rows in set (0.00 sec)
+"""
+
+SELECT * FROM gafanhotos
+WHERE nome LIKE '%_silva'; # Silva é o último sobrenome, necessário ter algum caractere antes _ iclusive espaço, mas Silvana não aparece.
+"""
+mysql> SELECT * FROM gafanhotos
+    -> WHERE nome LIKE '%_silva';
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| id | nome                      | profissao            | nascimento | sexo | peso  | altura | nacionalidade |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+| 13 | Allan Silva               | Programador          | 1993-11-11 | M    | 76.99 |   1.55 | Brasil        |
+| 28 | Herisson Silva            | Auxiliar Administrat | 1965-10-10 | M    | 74.65 |   1.56 | EUA           |
+| 50 | Denilson Barbosa da Silva | Empreendedor         | 2000-01-08 | M    | 97.30 |   2.00 | Brasil        |
++----+---------------------------+----------------------+------------+------+-------+--------+---------------+
+3 rows in set (0.00 sec)
+"""
+
+SELECT * FROM gafanhotos
+WHERE nome LIKE 'silva%';
+"""
+mysql> SELECT * FROM gafanhotos
+    -> WHERE nome LIKE 'silva%';
++----+---------------------+-------------+------------+------+-------+--------+---------------+
+| id | nome                | profissao   | nascimento | sexo | peso  | altura | nacionalidade |
++----+---------------------+-------------+------------+------+-------+--------+---------------+
+| 61 | Silvana Albuquerque | Programador | 1999-05-22 | F    | 56.00 |   1.50 | Brasil        |
++----+---------------------+-------------+------------+------+-------+--------+---------------+
+1 row in set (0.00 sec)
+"""
+
