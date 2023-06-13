@@ -373,3 +373,138 @@ mysql> SELECT * FROM gafanhotos
 1 row in set (0.00 sec)
 """
 
+
+
+# DISTINGUINDO 
+# Se você analisar, vamos procurar por 'carga' vários cursos com 40 horas... 
+# O DISTINCT vai pegar todos os registros iguais, e mostrar apenas uma vez. O valor 40, mesmo com várias ocorrências, só será exibido uma vez.
+# E assim para todos os registros. O DISTINCT vai exibir 'um de cada' pra os valores/registros existentes.
+
+SELECT DISTINCT carga FROM cursos;
+"""mysql> SELECT DISTINCT carga FROM cursos;
++-------+
+| carga |
++-------+
+|    40 |
+|    20 |
+|    10 |
+|    30 |
+|    60 |
+|    35 |
+|    15 |
+|    50 |
++-------+
+8 rows in set (0.01 sec)"""
+
+
+SELECT nacionalidade FROM gafanhotos;
+"""mysql> SELECT nacionalidade FROM gafanhotos;
++---------------+
+| nacionalidade |
++---------------+
+| Brasil        |
+| Portugal      |
+| Moçambique    |
+| Irlanda       |
+| Brasil        |
+| Brasil        |
+| EUA           |
+| Brasil        |
+| Portugal      |
+| EUA           |
+| Irlanda       |
+| Brasil        |
+| Brasil        |
+| Brasil        |
+| Portugal      |
+| EUA           |
+| Brasil        |
+| França        |
+| Brasil        |
+| Portugal      |
+| Brasil        |
+| Moçambique    |
+| Brasil        |
+| Japão         |
+| Brasil        |
+| Portugal      |
+| Brasil        |
+| EUA           |
+| Brasil        |
+| Irlanda       |
+| Brasil        |
+| Brasil        |
+| Brasil        |
+| Canadá        |
+| EUA           |
+| Brasil        |
+| Brasil        |
+| Portugal      |
+| Brasil        |
+| Angola        |
+| Moçambique    |
+| Brasil        |
+| EUA           |
+| Portugal      |
+| Brasil        |
+| Angola        |
+| Alemanha      |
+| Canadá        |
+| EUA           |
+| Brasil        |
+| Portugal      |
+| Canadá        |
+| Brasil        |
+| Itália        |
+| Canadá        |
+| EUA           |
+| Angola        |
+| Brasil        |
+| Brasil        |
+| Angola        |
+| Brasil        |
++---------------+
+61 rows in set (0.00 sec)"""
+
+
+SELECT DISTINCT nacionalidade FROM gafanhotos;
+"""mysql> SELECT DISTINCT nacionalidade FROM gafanhotos;
++---------------+
+| nacionalidade |
++---------------+
+| Brasil        |
+| Portugal      |
+| Moçambique    |
+| Irlanda       |
+| EUA           |
+| França        |
+| Japão         |
+| Canadá        |
+| Angola        |
+| Alemanha      |
+| Itália        |
++---------------+
+11 rows in set (0.00 sec)"""
+
+
+SELECT DISTINCT nacionalidade FROM gafanhotos
+ORDER BY nacionalidade ASC;
+"""mysql> SELECT DISTINCT nacionalidade FROM gafanhotos
+    -> ORDER BY nacionalidade ASC;
++---------------+
+| nacionalidade |
++---------------+
+| Alemanha      |
+| Angola        |
+| Brasil        |
+| Canadá        |
+| EUA           |
+| França        |
+| Irlanda       |
+| Itália        |
+| Japão         |
+| Moçambique    |
+| Portugal      |
++---------------+
+11 rows in set (0.02 sec)"""
+
