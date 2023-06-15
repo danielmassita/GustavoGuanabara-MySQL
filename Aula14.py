@@ -61,6 +61,33 @@ O [Curso] é <assistido> pelo [Gafanhoto].
 [Entidade] <Relacionamento> [Entidade] - mas nesse curso introdutório não teremos rel. ternários, rel. quaternários, rel. n-ésimos.
 
 Esse diagrama se chama DIAGRAMA ENTIDADE-RELACIONAMENTO (Diagrama E-R, ou DER).
+Tabelas não relacionais, quando ganham ESCALABILIDADE, começam a demandar mais um Modelo Relacional.
+
+- Entidades se relacionam umas com outras através de uma ligação, um Relacionamento. 
+- Cada 'gafanhoto' pode assistir a vários 'cursos'.
+- 'Gafanhoto' assiste N 'cursos'.
+- Cada 'curso' pode ser assistido por vários 'gafanhotos'.
+- 'Curso' é assistido por N 'gafanhotos.
+- Isso se chama CARDINALIDADE.
+
+# Até agora, temos os CONCEITOS: Entidades, Atributos, Relacionamentos, Cardinalidade (Simples-1 ou Múltipla-N, c. nula, c. mínima, c. máxima, etc.) 
+
+- A partir da CARDINALIDADE, podemos classificar os relacionamentos. 
+
+- CLASSIFICAÇÃO: 
+- muitos-para-muitos, N-pra-N (Um gafanhoto assiste N cursos. Um curso é assistido por N gafanhotos.)
+
+- CLASSIFICAÇÃO:
+- um-para-um, 1-para-1 ("Marido" se 'casa com' apenas uma "Esposa". Cada "Esposa" se casa apenas com um "Marido".)
+
+- CLASSIFICAÇÃO:
+- um-para-muitos, 1-para-N (
+- ("Funcionário" cuida de "Dependente". Um funcionário pode ter um dependente, vários dependentes ou nenhum dependente.)
+- (Cada "Dependente" é cuidado por apenas um "Funcionário".))
+
+EXEMPLOS:
+
+Cliente compra Produto. (
 
 
 """
