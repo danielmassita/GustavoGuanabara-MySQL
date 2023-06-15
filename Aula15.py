@@ -315,7 +315,38 @@ Andreia Delfino	Premiere	2017
 Danilo Araujo	PHP4	2010
 """
 
+# Eu tinha 60 alunos, e 30 cursos. Mas só aparecem os 10 alunos alterados. Na verdade, fizemos um INNER JOIN, ou seja, somente aqueles COM RELAÇÃO.
+UPDATE `cadastro`.`gafanhotos` SET `cursopreferido` = '1' WHERE (`id` = '14');
 
+SELECT gafanhotos.nome, cursos.nome, cursos.ano
+FROM gafanhotos JOIN cursos
+ON cursos.idcurso = gafanhotos.cursopreferido;
+"""
+Leila Martins	HTML5	2014
+Rosana Kunz	HTML5	2014              <<<<<<<<<
+Jackson Telles	Photoshop5	2014
+Janaína Couto	PHP	2015
+Carlisson Rosa	Java	2015
+Daniel Morais	MySQL	2016
+Lucas Damasceno	Word	2016
+Letícia Neves	Python	2017
+Emerson Gabriel	C++	2017
+Talita Nascimento	Premiere	2017
+Andreia Delfino	Premiere	2017
+Danilo Araujo	PHP4	2010
+"""
 
+# O INNER JOIN vai ver somente as relações ativas, ou seja, as linhas coloridas do diagrama entre Gafanhoto e Curso Preferido.
 
+SELECT gafanhotos.nome, cursos.nome, cursos.ano
+FROM gafanhotos INNER JOIN cursos
+ON cursos.idcurso = gafanhotos.cursopreferido
+ORDER BY gafanhotos.nome ASC;
+
+# Podemos melhorar mais usando apelidos (alias):
+
+SELECT g.nome, c.nome, c.ano
+FROM "gafanhotos AS g" INNER JOIN "cursos AS c"
+ON c.idcurso = g.cursopreferido
+ORDER BY g.nome ASC;
 
