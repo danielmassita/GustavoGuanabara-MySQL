@@ -346,7 +346,43 @@ ORDER BY gafanhotos.nome ASC;
 # Podemos melhorar mais usando apelidos (alias):
 
 SELECT g.nome, c.nome, c.ano
-FROM "gafanhotos AS g" INNER JOIN "cursos AS c"
+FROM gafanhotos AS g INNER JOIN cursos AS c
 ON c.idcurso = g.cursopreferido
 ORDER BY g.nome ASC;
+
+# O INNER JOIN pega somente a ÁREA RELACIONADA (no caso do exemplo, as linhas de quem é aluno e tem curso preferido).
+"""
+Relacionamentos do Tipo (N-para-1, muitos para único): 
+[gafanhotos] ---------- <prefere> ---------- [cursos]
+
+Menino                                        HTML
+Godofredo                                     PHP
+Dolores                                       Word
+Velho                                         Java
+
+Menino prefere Word.
+Godofredo prefere HTML5.
+Dolores prefere HTML5.
+Velho não prefere curso algum.
+"""
+
+# O OUTTER JOIN mostra aqueles registros SEM RELAÇÃO.
+
+# Temos uma tabela (gafanhotos) à ESQUERDA do JOIN e a tabela (cursos) à DIREITA do JOIN.
+# FROM gafanhotos AS g JOIN cursos AS c
+# Precisamos definir 'gafanhotos' como PREFERENCIAL, à 'cursos', quando usamos OUTER JOIN.
+SELECT g.nome, c.nome, c.ano
+FROM gafanhotos AS g LEFT OUTER JOIN cursos AS c
+ON c.idcurso = g.cursopreferido
+ORDER BY g.nome ASC;
+
+
+
+
+
+
+
+
+
+
 
