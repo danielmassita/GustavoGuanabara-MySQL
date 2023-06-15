@@ -1,6 +1,6 @@
 # Curso MySQL #14 - Modelo Relacional
 # https://youtu.be/8fxKJWJcRTw
-# 
+# https://www.cursoemvideo.com/curso/mysql/aulas/banco-de-dados/modulos/modelo-relacional/
 
 """ 
 RELACIONAMENTO ENTRE TABELAS ou MODELO RELACIONAL
