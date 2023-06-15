@@ -85,9 +85,55 @@ Tabelas não relacionais, quando ganham ESCALABILIDADE, começam a demandar mais
 - ("Funcionário" cuida de "Dependente". Um funcionário pode ter um dependente, vários dependentes ou nenhum dependente.)
 - (Cada "Dependente" é cuidado por apenas um "Funcionário".))
 
-EXEMPLOS:
+Relembrando os conceitos de CHAVE PRIMÁRIA (atributo específico que identifica as Tuplas). (CPF, código de barra, etc.)
+Temos também o conceito de CHAVE ESTRANGEIRA:
 
-Cliente compra Produto. (
+###
 
+Chave Estrangeira:
+Imagina o mundo; num lado do mundo eu tenho uma entidade X (pessoa no Brasil) e essa entidade X tem sua chave primária (CPF). 
+Do outro lado do mundo eu tenho uma entidade Y (pessoa em Portugal) e essa entidade Y também tem sua chave primária (NIF).
+Se eu quiser fazer uma relação entre uma entidade e outra, Relações Teóricas na forma prática nada mais são do que "troca de chaves".
+Então vou pegar a chave de um lado (CPF no Brasil) e jogar pro outro (NIF em Portugal).
 
+Por exemplo, eu tenho que relacionar a entidade X (pessoa com CPF no Brasil) com a entidade Y (pessoa com NIF em Portugal).
+Vamos supor que, para relacionar essas duas, eu tenha que usar a chave de X (CPF no Brasil), criar uma cópia para Y (Y que tem NIF, e criar Cópia-CPF na Entidade Portugal).
+Percebe que essa nova chave de baixo (Cópia-CPF) em Y, já era a Chave Primária de Y (NIF), mas a cópia aqui foi a chave que veio de X (ex CPF).
+
+Então ela não é CHAVE PRIMÁRIA de X (CPF), a chave primária de X que veio pra cá (Portugal). Eu chamo essa cópia da Chave Primária de X de: Chave Estrangeira (Cópia-CPF).
+Isso é, Chave Estrangeira ERA a Chave Primária de alguém (ex Brasil). Só que ela veio de um lugar (Brasil, X) para o outro lugar (Portugal, Y). 
+
+E o que vem de um lugar para o outro: O que é? - Estrangeiro. Quando um cara dos EUA vem ao Brasil, ele é estrangeiro. 
+Então, chave estrangeira é uma chave primária de algum lugar que veio pra outro lugar.
+
+Basicamente, criar relacionamento entre tabelas é fazer uma troca de chaves, pegar uma chave de um lado, jogar para o outro lado, e deixar de ser Chave Primária pra se tornar em uma Chave Estrangeira.
+
+As regras são baseadas nas CLASSIFICAÇÕES do relacionamento (1-1, 1-N, N-N).
+
+- Classificação de Relacionamento de 1:1 
+- Marido <casado> Esposa (manter a relação entre duas tabelas). 
+      Marido (`cpf-marido`, nome, nascimento, nacionalidade, ´cpf-esposa´)     <<<
+      Esposa (`cpf-esposa`, nome, nascimento, nacionalidade)                >>>
+
+# Podemos adicionar a Chave Primária cpf-esposa, copiar pra Entidade Marido, com nome cpf-esposa (Chave Estrangeira).
+# Os dados não precisam ser iguais/nome, mas os TIPOS DE DADOS devem ser compatíveis (varchar, int, time).
+
+- Classificação de Relacionamento de 1:N - Regra: Pega a chave primária do lado ÚNICO e joga no lado MUITOS como Chave Estrangeira. 
+- Funcionário <cuida> Dependentes (manter a relação entre duas tabelas, mesmo tipo: CPF = VarChar(12), cpf-func = VarChar(12)). 
+      Funcionário (`cpf`, nome, cargo, especialidade, )                                >>>
+      Dependente (`id`, nome, nascimento, nacionalidade, ´cpf-funcionario´)            <<<
+
+- Classificação de Relacionamento de N:N - Regra: "". 
+- Cliente <compra> Produtos (). 
+      Cliente (`cpf`, nome, endereco, telefone)                >>>
+      Produto (`cod-produto`, nome, fabricante, preco)        <<<
+      [Cliente] n ---------- <compra> ---------- n [Produto]  # Vamos transformar a RELAÇÃO <compra> em um ENTIDADE [COMPRA]
+      [Cliente] 1----<>---- n [Compra] n ----<>----1 [Produto]
+                             /    |    \
+                   `id-compra`   data    forma-pagto 
+
+Aplica a regra 1:1 de maneira desmembrada, quando temos relacionamentos múltiplos n:n.
+Então a regra de N-para-N é desmembrar os múltiplos relacionamentos desmembrados de 1:1.
+- Regra 1:1 - Chave lado 1 (`cpf`) e jogo no lado MUITOS-n [Compra] como ´cpf-cliente´ (chave estrangeira).
+- Regra 1:1 - Chave produto (`cod-prod`) e jogo no lado MUITOS-n [Compra] como ´cod-prod´ (chave estrangeira). 
 """
