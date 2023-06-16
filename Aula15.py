@@ -375,7 +375,7 @@ SELECT g.nome, c.nome, c.ano
 FROM gafanhotos AS g LEFT OUTER JOIN cursos AS c
 ON c.idcurso = g.cursopreferido
 ORDER BY g.nome ASC;
-
+# A Query vai dar Preferência pra gafanhotos, exibindo a totalidade dos alunos mesmo que sem relação com curso preferido.
 
 
 
