@@ -373,11 +373,109 @@ Velho não prefere curso algum.
 # Precisamos definir 'gafanhotos' como PREFERENCIAL, à 'cursos', quando usamos OUTER JOIN.
 SELECT g.nome, c.nome, c.ano
 FROM gafanhotos AS g LEFT OUTER JOIN cursos AS c
-ON c.idcurso = g.cursopreferido
-ORDER BY g.nome ASC;
+ON c.idcurso = g.cursopreferido;
+"""
+Daniel Morais	MySQL	2016
+Talita Nascimento	Premiere	2017
+Emerson Gabriel	C++	2017
+Lucas Damasceno	Word	2016
+Leila Martins	HTML5	2014
+Letícia Neves	Python	2017
+Janaína Couto	PHP	2015
+Carlisson Rosa	Java	2015
+Jackson Telles	Photoshop5	2014
+Danilo Araujo	PHP4	2010
+Andreia Delfino	Premiere	2017
+Valter Vilmerson		
+Allan Silva		
+Rosana Kunz	HTML5	2014
+Josiane Dutra		
+Elvis Schwarz		
+Paulo Narley		
+Joade Assis		
+Nara Matos		
+Marcos Dissotti		
+Ana Carolina Mendes		
+Guilherme de Sousa		
+Bruno Torres		
+Yuji Homa		
+Raian Porto		
+Paulo Batista		
+Monique Precivalli		
+Herisson Silva		
+Tiago Ulisses		
+Anderson Rafael		
+Karine Ribeiro		
+Roberto Luiz Debarba		
+Jarismar Andrade		
+Janaina Oliveira		
+Márcio Mello		
+Robson Rodolpho		
+Daniele Moledo		
+Neto Sophiate		
+Neriton Dias		
+André Schmidt		
+Isaias Buscarino		
+Rafael Guimma		
+Ana Carolina Hernandes		
+Luiz Paulo		
+Bruna Teles		
+Diogo Padilha		
+Bruno Miltersteiner		
+Elaine Nunes		
+Silvio Ricardo		
+Denilson Barbosa da Silva		
+Jucinei Teixeira		
+Bruna Santos		
+André Vitebo		
+Andre Santini		
+Ruan Valente		
+Nailton Mauricio		
+Rita Pontes		
+Carlos Camargo		
+Philppe Oliveira		
+Dayana Dias		
+Silvana Albuquerque		
+"""
 # A Query vai dar Preferência pra gafanhotos, exibindo a totalidade dos alunos mesmo que sem relação com curso preferido.
 
-
+# Podemos também definir a PRIORIDADE dos cursos, onde haverá ao menos uma entrada de registro pra cada curso, ou nenhuma entrada. 
+SELECT g.nome, c.nome, c.ano
+FROM gafanhotos AS g RIGHT OUTER JOIN cursos AS c
+ON c.idcurso = g.cursopreferido;
+"""
+Leila Martins	HTML5	2014
+Rosana Kunz	HTML5	2014
+	Algoritmos	2014
+Jackson Telles	Photoshop5	2014
+Janaína Couto	PHP	2015
+Carlisson Rosa	Java	2015
+Daniel Morais	MySQL	2016
+Lucas Damasceno	Word	2016
+Letícia Neves	Python	2017
+	POO	2016
+	Excel	2017
+	Responsividade	2018
+Emerson Gabriel	C++	2017
+	C#	2017
+	Android	2018
+	JavaScript	2017
+	PowerPoint	2018
+	Swift	2019
+	Hardware	2017
+	Redes	2016
+	Segurança	2018
+	SEO	2017
+Talita Nascimento	Premiere	2017
+Andreia Delfino	Premiere	2017
+	After Effects	2018
+	WordPress	2019
+	Joomla	2019
+	Magento	2019
+	Modelagem de Dados	2020
+	PHP7	2020
+Danilo Araujo	PHP4	2010
+"""
 
 
 
