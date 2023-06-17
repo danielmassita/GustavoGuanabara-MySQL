@@ -485,7 +485,6 @@ Danilo Araujo	PHP4	2010
 Transcrição
 
 
-Procurar no vídeo
 0:00
 hum hum hum
 0:19
