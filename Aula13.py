@@ -618,7 +618,6 @@ SELECT avg(altura) FROM gafanhotos;
 Transcrição
 
 
-Procurar no vídeo
 0:19
 olá pequeno gafanhoto seja bem vindo a
 0:22
