@@ -192,7 +192,6 @@ mysql> select * from gafanhotos;
 Transcrição
 
 
-Procurar no vídeo
 0:00
 ♫Cantarolando♫
 0:05
