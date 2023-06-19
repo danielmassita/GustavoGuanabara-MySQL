@@ -146,7 +146,6 @@ Então a regra de N-para-N é desmembrar os múltiplos relacionamentos desmembra
 Transcrição
 
 
-Procurar no vídeo
 0:00
 hum hum hum hum
 0:19
