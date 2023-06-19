@@ -648,7 +648,6 @@ Paula    |    Quézia    |    Estou feliz por elas?
 Transcrição
 
 
-Procurar no vídeo
 0:03
 hum hum
 0:19
