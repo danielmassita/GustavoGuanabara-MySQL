@@ -992,7 +992,6 @@ SELECT COUNT(*) FROM gafanhotos WHERE sexo = `F` AND altura > `1.90`;
 Transcrição
 
 
-Procurar no vídeo
 0:00
 hum hum hum
 0:19
