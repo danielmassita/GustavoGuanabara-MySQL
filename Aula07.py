@@ -163,7 +163,6 @@ TRUNCATE TABLE cursos;
 Transcrição
 
 
-Procurar no vídeo
 0:10
 🎵Música da abertura🎵
 0:19
