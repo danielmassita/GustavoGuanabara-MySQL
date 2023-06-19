@@ -127,7 +127,6 @@ select * from amigos;
 Transcrição
 
 
-Procurar no vídeo
 0:03
 van gaal
 0:19
